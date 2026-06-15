@@ -1,1 +1,0 @@
-# syncswap-app.github.io
