@@ -1,0 +1,107 @@
+{
+ "keyword": "syncswap",
+ "h1": "SyncSwap",
+ "brand": "SyncSwap",
+ "niche": "swap",
+ "verb": "Swap",
+ "title": "SyncSwap - Open App",
+ "meta_description": "syncswap opens the official swap route to connect a wallet, review price impact, and trade tokens on supported ZK rollups.",
+ "palette": {
+  "mode": "light",
+  "bg": "#F7F3FF",
+  "accent": "#8B5CF6",
+  "ink": "#161126"
+ },
+ "hero_h2": "Trade tokens through routed ZK liquidity",
+ "hero_lead": "SyncSwap is the official decentralized exchange app for swapping tokens across supported Ethereum ZK rollups with routed execution, liquidity pools, and wallet-based settlement.",
+ "badge": "ZK DEX",
+ "widget": {
+  "from": "ETH",
+  "from_net": "ZKsync Era",
+  "to": "USDC",
+  "to_net": "ZKsync Era",
+  "action": "Open SyncSwap App"
+ },
+ "trust": [
+  "Decentralized exchange",
+  "Ethereum ZK rollups",
+  "Smart router"
+ ],
+ "what_is": "SyncSwap is a decentralized exchange and liquidity hub for Ethereum ZK rollups, described in the <a href=\"https://docs.syncswap.xyz/syncswap/about-syncswap\">official docs</a> as infrastructure for token swaps, liquidity management, and DeFi access.",
+ "how": [
+  {
+   "t": "Open the app",
+   "d": "Use the official syncswap.xyz app route and connect a wallet on a supported network."
+  },
+  {
+   "t": "Choose tokens",
+   "d": "Select the token to spend and the token to receive, then enter the amount to load price and route details."
+  },
+  {
+   "t": "Review execution",
+   "d": "Check output, minimum received, price impact, pool route, and network gas before approving."
+  },
+  {
+   "t": "Confirm on-chain",
+   "d": "Approve the token if required, submit the swap in your wallet, and wait for the network confirmation."
+  }
+ ],
+ "points": [
+  {
+   "h": "Routed swaps",
+   "p": "The app uses routing across available pools to seek an efficient execution path for the selected trade."
+  },
+  {
+   "h": "Multi-pool design",
+   "p": "Protocol docs describe Classic, Stable, Aqua, and Range pool models for different asset and liquidity conditions."
+  },
+  {
+   "h": "ZK-rollup focus",
+   "p": "Docs list live support for ZKsync Era, Linea, Scroll, Sophon, and Creator Chain; check the app before transacting."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "SyncSwap docs",
+   "url": "https://docs.syncswap.xyz/syncswap"
+  },
+  {
+   "text": "Official links",
+   "url": "https://docs.syncswap.xyz/syncswap/resources/links"
+  },
+  {
+   "text": "ZKsync Era explorer",
+   "url": "https://explorer.zksync.io/"
+  }
+ ],
+ "faq": [
+  {
+   "q": "What is SyncSwap used for?",
+   "a": "SyncSwap is used to swap tokens and access liquidity features on supported Ethereum ZK rollups, with details available in the <a href=\"https://docs.syncswap.xyz/syncswap\">official documentation</a>.",
+   "open": true
+  },
+  {
+   "q": "Is SyncSwap the official app?",
+   "a": "This landing page is not the app; the official links page lists syncswap.xyz as the primary website, so verify the domain before connecting a wallet.",
+   "open": false
+  },
+  {
+   "q": "Which networks does SyncSwap support?",
+   "a": "The docs list ZKsync Era, Linea, Scroll, Sophon, and Creator Chain as supported ZK rollups; availability can change, so confirm inside the app.",
+   "open": false
+  },
+  {
+   "q": "Does SyncSwap show slippage and price impact?",
+   "a": "Yes. The trading guide describes price impact, minimum received, and route details that should be reviewed before confirming a swap.",
+   "open": false
+  },
+  {
+   "q": "Do I need a wallet for SyncSwap?",
+   "a": "Yes. Token swaps are wallet-based transactions, so you need a compatible wallet and gas on the selected network.",
+   "open": false
+  }
+ ],
+ "official_url": "https://syncswap.xyz/swap",
+ "official_domain": "syncswap.xyz",
+ "footer_note": "This is not the official app; verify syncswap.xyz before connecting a wallet. Educational content only, not financial advice."
+}
